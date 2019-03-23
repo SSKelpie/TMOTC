@@ -40,9 +40,9 @@ public class WholeGame : MonoBehaviour
     {
         if (_answerstate == 0)
         {
-            speech.text = "Are you a Night Owl or Early Bird?";
-            leftanswer.text = "Night Owl.";
-            rightanswer.text = "Early Bird!";
+            speech.text = "What do you think of fish?";
+            leftanswer.text = "They're good enough to eat!";
+            rightanswer.text = "Pretty fish are crucial to the environment.";
             catsprite.sprite = cat[10];
             _answerstate++;
 
@@ -51,42 +51,22 @@ public class WholeGame : MonoBehaviour
         }
         else if (_answerstate == 1)
         {
-            speech.text = "What do you like on your pizza?";
-            leftanswer.text = "Gotta love greens";
-            rightanswer.text = "I'm all about anchovies";
+            speech.text = "When do you like visiting the beach?";
+            leftanswer.text = "Daytime! Where the sun is blinding!";
+            rightanswer.text = "Usually at night, where I can see the stars.";
             catsprite.sprite = cat[4];
             _answerstate++;
-            //failed attempts
-//            if (b1)
-//            {
-//                ClickHandlerCorrect();
-//            }
-//
-//            if (b2)
-//            {
-//                ClickHandlerWrong();
-//            }
-            
+           
             
         }
         else if (_answerstate == 2)
-        {
-            speech.text = "Are you allergic to cats?";
-            leftanswer.text = "Nah.";
-            rightanswer.text = "Yes dude, get away!";
-            catsprite.sprite = cat[9];
-            _answerstate++;
-//old code left in to remind me what not to do
-//            if (leftbut)
-//            {
-//                _badanswer++;
-//                catsprite.sprite = cat[9];
-//            }
-//            else if (rightbut)
-//            {
-//                _goodanswer++;
-//                catsprite.sprite = cat[3];
-//            }
+        { 
+            AltPath();
+//            speech.text = "Are you allergic to cats?";
+//            leftanswer.text = "Nah.";
+//            rightanswer.text = "Yes dude, get away!";
+//            catsprite.sprite = cat[9];
+//            _answerstate++;
         }
         else if (_answerstate == 3)
         {
@@ -195,26 +175,57 @@ public class WholeGame : MonoBehaviour
         b2.onClick.Invoke();
         
         
-    } 
+    }
 
+    void AltPath()
+    {
+        if (_goodanswer > _badanswer)
+        {
+            _answerstate++;
+            speech.text = "You like stars huh? What about them?";
+            leftanswer.text = "They remind me about how little we are.";
+            rightanswer.text = "They're just neat.";
+            catsprite.sprite = cat[3];
+        }
+        else if (_badanswer > _goodanswer)
+        {
+            _answerstate++;
+            speech.text = "...What's so nice about the sun?";
+            leftanswer.text = " It big. Space big too.";
+            rightanswer.text = "Warm and toasty!";
+            catsprite.sprite = cat[0];
+        }
+        else if (_goodanswer == _badanswer)
+        {
+            _answerstate++;
+            speech.text = "Forget the beach then. What about space?";
+            leftanswer.text = "Cool stuff. I like aliens.";
+            rightanswer.text = "Neat. But I like beach more.";
+        }
+    }
 
     void ChangeSpeech()
     {
         if (_goodanswer > _badanswer)
         {
-            speech.text = "You can totally be my roommate then!";
+            speech.text = "Thanks, I'm glad I met someone as nice as you! Goodbye now!";
             leftanswer.text = " ";
             rightanswer.text = " ";
             catsprite.sprite = cat[3];
         }
         else if (_badanswer > _goodanswer)
         {
-            speech.text = "You can't live with me man...";
+            speech.text = "Sorry pal, you're better as food than friend.";
             leftanswer.text = " ";
             rightanswer.text = " ";
             catsprite.sprite = cat[0];
         }
-
+        else if (_goodanswer == _badanswer)
+        {
+            speech.text = "You've found me out! Gotta blast!";
+            leftanswer.text = " ";
+            rightanswer.text = " ";
+        }
     }
 }
     
