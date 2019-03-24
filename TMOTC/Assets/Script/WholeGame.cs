@@ -62,69 +62,34 @@ public class WholeGame : MonoBehaviour
         else if (_answerstate == 2)
         { 
             AltPath();
-//            speech.text = "Are you allergic to cats?";
-//            leftanswer.text = "Nah.";
-//            rightanswer.text = "Yes dude, get away!";
-//            catsprite.sprite = cat[9];
-//            _answerstate++;
         }
         else if (_answerstate == 3)
         {
-            speech.text = "How do you feel about naps?";
-            leftanswer.text = "Hate 'em.";
-            rightanswer.text = "Love 'em!";
-            catsprite.sprite = cat[6];
-            _answerstate++;
+            AltPath2();
 
-//            if (leftbut)
-//            {
-//                _badanswer++;
-//                catsprite.sprite = cat[1];
-//            }
-//            else if (rightbut)
-//            {
-//                _goodanswer++;
-//                catsprite.sprite = cat[3];
-//            }
         }
         else if (_answerstate == 4)
         {
-            speech.text = "Don't you hate birds?";
-            leftanswer.text = "They're the worst!";
-            rightanswer.text = "Not really man.";
+            speech.text = "*Sigh* Alright, I'll let you in on a secret. A secret to make you my friend.";
+            leftanswer.text = "Oh really? I'm so ready for it!";
+            rightanswer.text = "Do I have know? I don't really care.";
             catsprite.sprite = cat[3];
-            _answerstate++;
-//            if (leftbut)
-//            {
-//                _goodanswer++;
-//                catsprite.sprite = cat[3];
-//            }
-//            else if (rightbut)
-//            {
-//                _badanswer++;
-//                catsprite.sprite = cat[3];
-//            }
+            _answerstate++;    
         }
         else if (_answerstate == 5)
         {
-            speech.text = "Alright, can I have some belly rubs?";
-            leftanswer.text = "Sure Thing!";
-            rightanswer.text = "I dont know...";
+            speech.text = "I'm not from around here...";
+            leftanswer.text = "A lot of people are. Your point?";
+            rightanswer.text = "Like, from another country? That's fine!";
             catsprite.sprite = cat[7];
             _answerstate++;
 
-//            if (leftbut)
-//            {
-//                _goodanswer++;
-//                catsprite.sprite = cat[3];
-//            }
-//            else if (rightbut)
-//            {
-//                _badanswer++;
-//                catsprite.sprite = cat[6];
-//            }
         }
         else if (_answerstate == 6)
+        {
+           AltPath3();
+        }
+        else if (_answerstate == 7)
         {
             ChangeSpeech();
         }
@@ -141,7 +106,7 @@ public class WholeGame : MonoBehaviour
         {
             _goodanswer++;
         }
-        // do the things you want it to do
+    
     }
 
     void ClickHandlerRightButton()
@@ -157,26 +122,7 @@ public class WholeGame : MonoBehaviour
 
     }
 
-    void ButtonChoices()
-    {
-        //switch added listener each time it was called
-//        switch (_answerstate % 2)
-//        {
-//            case 0:
-//                b1.onClick.Invoke();
-//                b2.onClick.Invoke();
-//                break;
-//            case 1:
-//                b2.onClick.AddListener(ClickHandlerCorrect);
-//                b1.onClick.AddListener(ClickHandlerWrong);
-//                break;
-//        }
-        b1.onClick.Invoke();
-        b2.onClick.Invoke();
-        
-        
-    }
-
+  
     void AltPath()
     {
         if (_goodanswer > _badanswer)
@@ -204,11 +150,65 @@ public class WholeGame : MonoBehaviour
         }
     }
 
+    void AltPath2()
+    {
+        if (_goodanswer > _badanswer)
+        {
+            _answerstate++;
+            speech.text = "Speaking about the possibility about life and how space makes people feel insignificant, what about about aliens?";
+            leftanswer.text = "...They don't exist man.";
+            rightanswer.text = "They're all right. A bit mysterious.";
+            catsprite.sprite = cat[3];
+        }
+        else if (_badanswer > _goodanswer)
+        {
+            _answerstate++;
+            speech.text = "So like thats it?";
+            leftanswer.text = "Yeah. Like IDK what else man.";
+            rightanswer.text = "I mean it's space. It's ok.";
+            catsprite.sprite = cat[0];
+        }
+        else if (_goodanswer == _badanswer)
+        {
+            _answerstate++;
+            speech.text = "Oof man IDK how you got here, but how's it going so far?";
+            leftanswer.text = "Pretty ok. Code could use some reworking.";
+            rightanswer.text = "Is this leading to an anti-climatic ending?";
+        }  
+    }
+
+    void AltPath3()
+    {
+        if (_goodanswer > _badanswer)
+        {
+            _answerstate++;
+            speech.text = "No... more like space. I'm from space... is that okay?";
+            leftanswer.text = "Like an alien?...oh man..";
+            rightanswer.text = "Like an alien? That's totally cool man!";
+            catsprite.sprite = cat[3];
+        }
+        else if (_badanswer > _goodanswer)
+        {
+            _answerstate++;
+            speech.text = "Really? Not even if I'm some alien from space?";
+            leftanswer.text = "Not really mate.";
+            rightanswer.text = "...you're what?";
+            catsprite.sprite = cat[0];
+        }
+        else if (_goodanswer == _badanswer)
+        {
+            _answerstate++;
+            speech.text = "Oof man IDK how you got here, but how's it going so far?";
+            leftanswer.text = "Pretty ok. Code could use some reworking.";
+            rightanswer.text = "Is this leading to an anti-climatic ending?";
+        }   
+    }
+    
     void ChangeSpeech()
     {
         if (_goodanswer > _badanswer)
         {
-            speech.text = "Thanks, I'm glad I met someone as nice as you! Goodbye now!";
+            speech.text = "Thanks, I'm glad I met someone as nice as you! Goodbye friend!";
             leftanswer.text = " ";
             rightanswer.text = " ";
             catsprite.sprite = cat[3];
