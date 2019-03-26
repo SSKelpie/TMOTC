@@ -17,8 +17,9 @@ public class WholeGame : MonoBehaviour
     public TextMeshProUGUI rightanswer;
     public Button b1; // left button
     public Button b2; // right button
-    public AudioSource wut;
+    public AudioSource bgsound;
     public AudioClip ocean;
+    public AudioClip purring;
     
     
     //right so these were calling buttons but didn't use UI or onClick
@@ -36,7 +37,7 @@ public class WholeGame : MonoBehaviour
     {
         b1.onClick.AddListener(ClickHandlerRightButton);
         b2.onClick.AddListener(ClickHandlerLeftButton);
-        wut = GetComponent<AudioSource>();
+        bgsound = GetComponent<AudioSource>();
         // ButtonChoices();
     }
 
@@ -63,7 +64,7 @@ public class WholeGame : MonoBehaviour
             catsprite.sprite = cat[2];
             beachbg.sprite = beach[1];
             _answerstate++;
-            wut.Play();
+            bgsound.Play();
 
 
         }
@@ -222,7 +223,7 @@ public class WholeGame : MonoBehaviour
             leftanswer.text = " ";
             rightanswer.text = " ";
             catsprite.sprite = cat[12];
-            //AudioSource.PlayOneShot(goodend);
+            bgsound.clip = purring;
         }
         else if (_badanswer > _goodanswer)
         {
@@ -230,14 +231,14 @@ public class WholeGame : MonoBehaviour
             leftanswer.text = " ";
             rightanswer.text = " ";
             catsprite.sprite = cat[13];
-            //AudioSource.PlayOneShot(badend);
+            
         }
         else if (_goodanswer == _badanswer)
         {
             speech.text = "You've found me out! Gotta blast!";
             leftanswer.text = " ";
             rightanswer.text = " ";
-            //AudioSource.PlayOneShot(secretend);
+           
         }
     }
 }
