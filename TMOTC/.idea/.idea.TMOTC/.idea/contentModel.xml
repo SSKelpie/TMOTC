@@ -28,9 +28,6 @@
               <e p="TMPro_Surface.cginc" t="Include" />
             </e>
           </e>
-          <e p="Sprites" t="Include">
-            <e p="EmojiOne Attribution.txt" t="Include" />
-          </e>
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />

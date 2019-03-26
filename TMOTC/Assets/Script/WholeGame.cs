@@ -17,13 +17,18 @@ public class WholeGame : MonoBehaviour
     public TextMeshProUGUI rightanswer;
     public Button b1; // left button
     public Button b2; // right button
+    public AudioSource wut;
+    public AudioClip ocean;
+    
     
     //right so these were calling buttons but didn't use UI or onClick
     //public Button rightbut;
     //public Button leftbut;
 
     public TextMeshProUGUI speech;
+    public Sprite[] beach;
     public Sprite[] cat;
+    public SpriteRenderer beachbg;
     public SpriteRenderer catsprite;
 
     // Start is called before the first frame update
@@ -31,7 +36,8 @@ public class WholeGame : MonoBehaviour
     {
         b1.onClick.AddListener(ClickHandlerRightButton);
         b2.onClick.AddListener(ClickHandlerLeftButton);
-       // ButtonChoices();
+        wut = GetComponent<AudioSource>();
+        // ButtonChoices();
     }
 
     // Update is called once per frame
@@ -54,10 +60,12 @@ public class WholeGame : MonoBehaviour
             speech.text = "When do you like visiting the beach?";
             leftanswer.text = "Daytime! Where the sun is blinding!";
             rightanswer.text = "Usually at night, where I can see the stars.";
-            catsprite.sprite = cat[4];
+            catsprite.sprite = cat[2];
+            beachbg.sprite = beach[1];
             _answerstate++;
-           
-            
+            wut.Play();
+
+
         }
         else if (_answerstate == 2)
         { 
@@ -73,7 +81,7 @@ public class WholeGame : MonoBehaviour
             speech.text = "*Sigh* Alright, I'll let you in on a secret. A secret to make you my friend.";
             leftanswer.text = "Oh really? I'm so ready for it!";
             rightanswer.text = "Do I have know? I don't really care.";
-            catsprite.sprite = cat[3];
+            catsprite.sprite = cat[0];
             _answerstate++;    
         }
         else if (_answerstate == 5)
@@ -131,7 +139,8 @@ public class WholeGame : MonoBehaviour
             speech.text = "You like stars huh? What about them?";
             leftanswer.text = "They remind me about how little we are.";
             rightanswer.text = "They're just neat.";
-            catsprite.sprite = cat[3];
+            catsprite.sprite = cat[11];
+            beachbg.sprite = beach[0];
         }
         else if (_badanswer > _goodanswer)
         {
@@ -139,7 +148,8 @@ public class WholeGame : MonoBehaviour
             speech.text = "...What's so nice about the sun?";
             leftanswer.text = " It big. Space big too.";
             rightanswer.text = "Warm and toasty!";
-            catsprite.sprite = cat[0];
+            catsprite.sprite = cat[6];
+            beachbg.sprite = beach[1];
         }
         else if (_goodanswer == _badanswer)
         {
@@ -158,7 +168,7 @@ public class WholeGame : MonoBehaviour
             speech.text = "Speaking about the possibility about life and how space makes people feel insignificant, what about about aliens?";
             leftanswer.text = "...They don't exist man.";
             rightanswer.text = "They're all right. A bit mysterious.";
-            catsprite.sprite = cat[3];
+            catsprite.sprite = cat[10];
         }
         else if (_badanswer > _goodanswer)
         {
@@ -166,7 +176,7 @@ public class WholeGame : MonoBehaviour
             speech.text = "So like thats it?";
             leftanswer.text = "Yeah. Like IDK what else man.";
             rightanswer.text = "I mean it's space. It's ok.";
-            catsprite.sprite = cat[0];
+            catsprite.sprite = cat[9];
         }
         else if (_goodanswer == _badanswer)
         {
@@ -211,20 +221,23 @@ public class WholeGame : MonoBehaviour
             speech.text = "Thanks, I'm glad I met someone as nice as you! Goodbye friend!";
             leftanswer.text = " ";
             rightanswer.text = " ";
-            catsprite.sprite = cat[3];
+            catsprite.sprite = cat[12];
+            //AudioSource.PlayOneShot(goodend);
         }
         else if (_badanswer > _goodanswer)
         {
             speech.text = "Sorry pal, you're better as food than friend.";
             leftanswer.text = " ";
             rightanswer.text = " ";
-            catsprite.sprite = cat[0];
+            catsprite.sprite = cat[13];
+            //AudioSource.PlayOneShot(badend);
         }
         else if (_goodanswer == _badanswer)
         {
             speech.text = "You've found me out! Gotta blast!";
             leftanswer.text = " ";
             rightanswer.text = " ";
+            //AudioSource.PlayOneShot(secretend);
         }
     }
 }
